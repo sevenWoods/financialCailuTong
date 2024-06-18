@@ -165,4 +165,17 @@ onBeforeUnmount(() => {
 :deep(.el-input-group__append, .el-input-group__prepend) {
   padding: 0;
 }
+
+// .select-none {
+//   /*加载背景图：图片地址 不平铺 */
+//   background: url('@/assets/images/bgc1.jpg') no-repeat center center;
+
+//   /* 让背景图基于容器大小伸缩 */
+//   background-size: cover;
+//   background-attachment: fixed;
+// }
+
+// .login-form {
+//   margin-bottom: 150px;
+// }
 </style>
