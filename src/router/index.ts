@@ -119,7 +119,9 @@ router.beforeEach((to: ToRouteType, _from, next) => {
   if (!externalLink) {
     to.matched.some(item => {
       if (!item.meta.title) return "";
-      const Title = getConfig().Title;
+      // 去除logo
+      // const Title = getConfig().Title;
+      const Title = null;
       if (Title) document.title = `${item.meta.title} | ${Title}`;
       else document.title = item.meta.title as string;
     });
