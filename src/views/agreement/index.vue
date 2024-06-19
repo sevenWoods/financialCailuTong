@@ -22,6 +22,7 @@
       </el-button-group>
     </div>
     <el-table
+      v-loading.lock="openLoading"
       element-loading-text="加载中..."
       element-loading-background="rgba(0, 0, 0, 0.7)"
       :data="tableData"
@@ -59,7 +60,7 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"
     />
-    <updateAgree ref="updateAgreeRef" />
+    <updateAgree ref="updateAgreeRef" :getApiData="getApiData" />
   </el-card>
 </template>
 
@@ -74,7 +75,7 @@ import updateAgree from "./updateAgree.vue";
 // import { apiEnterprise } from "@/api/enterprise";
 // import { apiAgreementList } from "@/api/apiAgreement";
 // import { hasAuth } from "@/router/utils";
-
+const openLoading = ref(false);
 // 分页信息
 const pagination = ref({ page: 1, limit: 10 });
 // 分页总数
@@ -83,29 +84,33 @@ const total = ref(3);
 const tableData = ref([]);
 // 请求接口获取数据
 const getApiData = () => {
-  tableData.value = [
-    {
-      id: 1,
-      title: "人机",
-      content: "8888",
-      create_time: "2023-06-05 14:40:05",
-      update_time: "2023-06-05 14:40:05"
-    },
-    {
-      id: 2,
-      title: "財虚琨",
-      content: "练习两年半的高材生",
-      create_time: "2023-01-15 09:58:04",
-      update_time: "2023-01-15 09:58:04"
-    },
-    {
-      id: 3,
-      title: "hello",
-      content: "你好brother",
-      create_time: "2023-01-15 09:58:02",
-      update_time: "2023-01-15 09:58:02"
-    }
-  ];
+  openLoading.value = true;
+  setTimeout(() => {
+    openLoading.value = false;
+    tableData.value = [
+      {
+        id: 1,
+        title: "人机",
+        content: "8888",
+        create_time: "2023-06-05 14:40:05",
+        update_time: "2023-06-05 14:40:05"
+      },
+      {
+        id: 2,
+        title: "財虚琨",
+        content: "练习两年半的高材生",
+        create_time: "2023-01-15 09:58:04",
+        update_time: "2023-01-15 09:58:04"
+      },
+      {
+        id: 3,
+        title: "hello",
+        content: "你好brother",
+        create_time: "2023-01-15 09:58:02",
+        update_time: "2023-01-15 09:58:02"
+      }
+    ];
+  }, 300);
 };
 
 const updateAgreeRef = ref(null);

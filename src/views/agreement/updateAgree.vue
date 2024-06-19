@@ -5,6 +5,7 @@ import { ElMessage, FormRules } from "element-plus";
 defineOptions({
   name: ""
 });
+const prop = defineProps(["getApiData"]);
 const dialog = ref(false);
 const title = ref("");
 const defaultinfo = { title: "", content: "", id: null };
@@ -21,7 +22,7 @@ const submit = formRef => {
       } else {
         ElMessage.success("添加信息成功");
       }
-
+      prop.getApiData();
       dialog.value = false;
       info.value = { ...defaultinfo };
     }
@@ -61,12 +62,17 @@ defineExpose({
       <el-form-item label="标题" prop="title">
         <el-input
           v-model="info.title"
-          style="width: 80%"
+          style="width: 95%"
           :disabled="isdetail"
         />
       </el-form-item>
       <el-form-item label="内容" prop="content">
-        <el-input v-model="info.content" type="textarea" :disabled="isdetail" />
+        <el-input
+          v-model="info.content"
+          type="textarea"
+          :disabled="isdetail"
+          style="width: 95%"
+        />
       </el-form-item>
     </el-form>
     <template #footer v-if="!isdetail">
