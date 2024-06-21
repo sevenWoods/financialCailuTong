@@ -1,26 +1,26 @@
 <script setup lang="ts">
 defineOptions({
   name: "Search"
-})
-import { useRenderIcon } from "@/components/ReIcon/src/hooks"
+});
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 // import { apiListAdmin } from "@/api/apiAdministrator"
-import { ref } from "vue"
+import { ref } from "vue";
 const props = defineProps([
   "searchFormDtata",
   "refreshList",
   "formSelect1",
   "formSelect2",
   "formSelect3"
-])
-const loading = ref(false)
-const searchForm = ref<any>({})
-const data = { isFalse: true }
-const emits = defineEmits(["clearSort"])
+]);
+const loading = ref(false);
+const searchForm = ref<any>({});
+const data = { isFalse: true };
+const emits = defineEmits(["clearSort"]);
 const resetSearch = () => {
-  searchForm.value = {}
-  emits("clearSort", data)
-  props.refreshList()
-}
+  searchForm.value = {};
+  emits("clearSort", data);
+  props.refreshList();
+};
 // const remoteMethod = (query: number) => {
 //   if (query) {
 //     loading.value = true
@@ -38,56 +38,56 @@ const resetSearch = () => {
 // }
 
 const disabledDate = time => {
-  return time < searchForm.value.start
-}
+  return time < searchForm.value.start;
+};
 
 const disabledDateStart = time => {
   if (searchForm.value.end) {
-    return time > searchForm.value.end
+    return time > searchForm.value.end;
   }
-}
+};
 const handleStart = () => {
   if (searchForm.value.start) {
-    let date = new Date(searchForm.value.start)
+    let date = new Date(searchForm.value.start);
     searchForm.value.start =
       date.getFullYear() +
       "-" +
       (date.getMonth() + 1) +
       "-" +
       date.getDate() +
-      " 00:00:00"
+      " 00:00:00";
   }
-}
+};
 
 const handleEnd = () => {
   if (searchForm.value.end) {
-    let date = new Date(searchForm.value.end)
+    let date = new Date(searchForm.value.end);
     searchForm.value.end =
       date.getFullYear() +
       "-" +
       (date.getMonth() + 1) +
       "-" +
       date.getDate() +
-      " 23:59:59"
+      " 23:59:59";
   }
-}
+};
 // todo: 定义防抖函数：
 function debounce(func, wait) {
-  let timeout
+  let timeout;
   return function executedFunction(...args) {
     const later = () => {
-      clearTimeout(timeout)
-      func(...args)
-    }
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-  }
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 defineExpose({
   searchForm,
   handleEnd,
   handleStart
-})
+});
 </script>
 
 <template>
@@ -176,9 +176,11 @@ defineExpose({
       查询
     </el-button>
   </el-form>
-  <div class="mb-2 flex justify-end">
-    <slot name="btn"></slot>
+  <div class="mb-2 flex justify-between">
+    <slot name="hint"></slot>
+    <!-- <slot name="btn"></slot> -->
     <el-button-group>
+      <slot name="btn"></slot>
       <el-tooltip content="重置" placement="top">
         <el-button
           type="info"
