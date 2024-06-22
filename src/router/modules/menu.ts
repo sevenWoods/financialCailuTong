@@ -16,6 +16,16 @@ export default {
         // 通过设置showParent为true显示父级
         showParent: true
       }
+    },
+    {
+      path: "/menu/role/index",
+      name: "role",
+      component: () => import("@/views/role/index.vue"),
+      meta: {
+        title: "角色管理",
+        // 通过设置showParent为true显示父级
+        showParent: true
+      }
     }
   ]
 };

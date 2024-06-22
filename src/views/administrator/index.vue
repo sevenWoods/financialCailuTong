@@ -35,6 +35,7 @@ const formSelect2 = [
 ];
 
 // 表格数据
+const paginaRef = ref(null);
 const openLoading = ref(false);
 const adminData = ref([
   {
@@ -104,6 +105,9 @@ const submitAdmin = formRef => {
     }
   });
 };
+onMounted(() => {
+  paginaRef.value.total = 3;
+});
 </script>
 
 <template>
@@ -115,7 +119,7 @@ const submitAdmin = formRef => {
       :formSelect2="formSelect2"
     >
       <template #hint>
-        <div class="w-50">
+        <div class="w-60">
           <el-alert
             title="仅演示，操作后不生效"
             type="info"
@@ -168,6 +172,7 @@ const submitAdmin = formRef => {
         </template>
       </el-table-column>
     </el-table>
+    <Pagination ref="paginaRef" />
     <updateAdmin ref="updateRef" @submitAdmin="submitAdmin" />
   </el-card>
 </template>
