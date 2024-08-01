@@ -55,9 +55,14 @@ const delRole = row => {
     }, 400);
   });
 };
-const editRole = (row) => {
-  
-}
+const editRole = row => {};
+// 加载中
+const loading = () => {
+  openLoading.value = true;
+  setTimeout(() => {
+    openLoading.value = false;
+  }, 400);
+};
 onMounted(() => {
   paginaRef.value.total = 4;
 });
@@ -108,7 +113,7 @@ onMounted(() => {
         </template>
       </el-table-column>
     </el-table>
-    <Pagination ref="paginaRef" />
+    <Pagination ref="paginaRef" @refreshPage="loading" />
   </el-card>
 </template>
 

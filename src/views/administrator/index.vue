@@ -200,7 +200,7 @@ onMounted(() => {
         </template>
       </el-table-column>
     </el-table>
-    <Pagination ref="paginaRef" />
+    <Pagination ref="paginaRef" @refreshPage="submit" />
     <updateAdmin ref="updateRef" @submitAdmin="submitAdmin" />
     <!-- 分配弹框 -->
     <el-dialog destroy-on-close v-model="dialog" title="分配角色" width="45%">

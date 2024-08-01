@@ -59,6 +59,7 @@
       :background="true"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"
+      @size-change="getApiData"
     />
     <updateAgree ref="updateAgreeRef" :getApiData="getApiData" />
   </el-card>
