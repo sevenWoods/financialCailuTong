@@ -96,7 +96,11 @@ const editAdmin = row => {
 const submitAdmin = formRef => {
   formRef.validate(valid => {
     if (valid) {
-      ElMessage.success("修改管理员成功！");
+      if (updateRef.value.formData.id) {
+        ElMessage.success("修改管理员成功！");
+      } else {
+        ElMessage.success("添加管理员成功！");
+      }
       updateRef.value.dialog = false;
       openLoading.value = true;
       setTimeout(() => {
@@ -104,6 +108,26 @@ const submitAdmin = formRef => {
       }, 400);
     }
   });
+};
+// 添加管理员
+const addAdmin = () => {
+  updateRef.value.title = "新增管理员";
+  updateRef.value.dialog = true;
+};
+// 分配角色部分
+const dialog = ref(false);
+const formData = ref<any>({});
+const allocateAdmin = row => {
+  dialog.value = true;
+  formData.value = { ...row };
+};
+// 分配确认
+const submit = () => {
+  dialog.value = false;
+  openLoading.value = true;
+  setTimeout(() => {
+    openLoading.value = false;
+  }, 400);
 };
 onMounted(() => {
   paginaRef.value.total = 3;
@@ -117,6 +141,7 @@ onMounted(() => {
       :searchFormDtata="searchFormDtata"
       :formSelect1="formSelect1"
       :formSelect2="formSelect2"
+      :refresh-list="submit"
     >
       <template #hint>
         <div class="w-60">
@@ -130,7 +155,9 @@ onMounted(() => {
         </div>
       </template>
       <template #btn>
-        <el-button type="primary" class="mr-2">添加</el-button>
+        <el-button type="primary" @click="addAdmin" class="mr-2"
+          >添加</el-button
+        >
       </template>
     </Search>
     <el-table
@@ -165,15 +192,42 @@ onMounted(() => {
         </template>
       </el-table-column>
       <el-table-column prop="email" label="邮箱" />
-      <el-table-column fixed="right" label="操作">
+      <el-table-column fixed="right" width="230" label="操作">
         <template #default="{ row }">
           <el-button type="warning" @click="editAdmin(row)">修改</el-button>
+          <el-button type="danger" @click="allocateAdmin(row)">分配</el-button>
           <el-button type="danger" @click="delAdmin(row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
     <Pagination ref="paginaRef" />
     <updateAdmin ref="updateRef" @submitAdmin="submitAdmin" />
+    <!-- 分配弹框 -->
+    <el-dialog destroy-on-close v-model="dialog" title="分配角色" width="45%">
+      <el-form :model="formData" label-width="auto" style="max-width: 770px">
+        <el-form-item label="用户名">
+          <el-input v-model.trim="formData.name" disabled />
+        </el-form-item>
+
+        <el-form-item label="角色">
+          <el-select
+            v-model="formData.role_name"
+            placeholder="请您选择分配的角色"
+            style="width: 370px"
+          >
+            <el-option label="开发角色" value="开发角色" />
+            <el-option label="马总角色" value="马总角色" />
+            <el-option label="经理角色" value="经理角色" />
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button @click="dialog = false">取消</el-button>
+          <el-button type="primary" @click="submit"> 确定 </el-button>
+        </div>
+      </template>
+    </el-dialog>
   </el-card>
 </template>
 
@@ -183,5 +237,8 @@ onMounted(() => {
   display: block;
   border-radius: 5px;
   margin: 0 auto;
+}
+::v-deep(.el-button + .el-button) {
+  margin-left: 2px;
 }
 </style>

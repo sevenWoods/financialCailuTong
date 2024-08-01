@@ -2,8 +2,10 @@
 defineOptions({
   name: "updateAdmin"
 });
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, computed } from "vue";
 import { FormRules } from "element-plus";
+import { Delete, Download, Plus, ZoomIn } from "@element-plus/icons-vue";
+import type { UploadFile } from "element-plus";
 import at1 from "@/assets/images/at1.jpg";
 import at2 from "@/assets/images/at2.jpg";
 import at3 from "@/assets/images/at3.jpg";
@@ -77,13 +79,32 @@ const rules = reactive<FormRules>({
   //   }
   // ]
 });
+
 // 取消事件
 const canceList = () => {
   formData.value = { ...defaultformData };
   formRef.value.resetFields();
+  status.value =
+    false; /* 必须重置，不然图片上传后，直接弹框关闭，是true,头像组件直接隐藏了 */
   dialog.value = false;
 };
 
+// 用户头像
+const status = ref(false);
+// 图片上传成功钩子
+const onChange = file => {
+  console.log("🚀 ~ onChange ~ file:", file);
+  file.url ? (status.value = true) : (status.value = false);
+};
+
+// 删除图片
+const onRemove = (file: UploadFile, vakl) => {
+  // 删除要把状态恢复默认
+  status.value = false;
+};
+const isShow = computed(() => {
+  return title.value.includes("新增");
+});
 onMounted(() => {});
 defineExpose({
   dialog,
@@ -94,7 +115,13 @@ defineExpose({
 </script>
 
 <template>
-  <el-dialog v-model="dialog" :title="title" width="40%" @close="canceList">
+  <el-dialog
+    destroy-on-close
+    v-model="dialog"
+    :title="title"
+    width="40%"
+    @close="canceList"
+  >
     <el-form
       :model="formData"
       ref="formRef"
@@ -102,9 +129,33 @@ defineExpose({
       :rules="rules"
       class="pr-2 pl-2"
     >
-      <el-form-item style="font-weight: 700" label="用户头像" prop="avatar">
+      <el-form-item
+        v-if="isShow"
+        style="font-weight: 700"
+        label="用户头像"
+        prop="avatar"
+      >
+        <el-upload
+          action="#"
+          :limit="1"
+          :on-change="onChange"
+          :on-remove="onRemove"
+          list-type="picture-card"
+          :auto-upload="false"
+          :class="{ hideImg: status }"
+        >
+          <el-icon><Plus /></el-icon>
+        </el-upload>
+      </el-form-item>
+      <el-form-item
+        v-else
+        style="font-weight: 700"
+        label="用户头像"
+        prop="avatar"
+      >
         <el-image :src="formData.avatar" class="TableimgPic" />
       </el-form-item>
+
       <el-form-item label="类型" prop="job">
         <el-select
           v-model="formData.job"
@@ -182,5 +233,10 @@ defineExpose({
   width: 90px;
   display: block;
   border-radius: 5px;
+}
+.hideImg {
+  ::v-deep(.el-upload--picture-card) {
+    display: none;
+  }
 }
 </style>
