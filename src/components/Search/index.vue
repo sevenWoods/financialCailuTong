@@ -5,13 +5,23 @@ defineOptions({
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 // import { apiListAdmin } from "@/api/apiAdministrator"
 import { ref } from "vue";
-const props = defineProps([
-  "searchFormDtata",
-  "refreshList",
-  "formSelect1",
-  "formSelect2",
-  "formSelect3"
-]);
+const props = defineProps({
+  searchFormDtata: {
+    type: Object,
+    default: () => ({}) // 如果需要默认值
+  },
+  refreshList: {
+    type: Function,
+    default: () => {} // 如果需要默认行为
+  },
+  formSelect1: Array, // 可以直接指定类型，Vue 会自动推断默认值
+  formSelect2: Array,
+  formSelect3: Array,
+  isButton: {
+    type: Boolean,
+    default: true
+  }
+});
 const loading = ref(false);
 const searchForm = ref<any>({});
 const data = { isFalse: true };
@@ -168,13 +178,15 @@ defineExpose({
         :disabled-date="disabledDate"
       />
     </el-form-item>
-    <el-button
-      type="primary"
-      @click="refreshList"
-      :icon="useRenderIcon('ep:search')"
-    >
-      查询
-    </el-button>
+    <template v-if="isButton">
+      <el-button
+        type="primary"
+        @click="refreshList"
+        :icon="useRenderIcon('ep:search')"
+      >
+        查询
+      </el-button>
+    </template>
   </el-form>
   <div class="mb-2 flex justify-between">
     <slot name="hint"></slot>
