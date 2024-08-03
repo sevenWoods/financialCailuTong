@@ -80,9 +80,6 @@ onMounted(() => {
           />
         </div>
       </template>
-      <template #btn>
-        <el-button type="primary" class="mr-2">添加</el-button>
-      </template>
     </Search>
     <el-table
       v-loading.lock="openLoading"
