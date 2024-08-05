@@ -110,7 +110,7 @@ defineExpose({
       <el-select
         v-if="item.type === 'select1'"
         v-model="searchForm[item.prop]"
-        :placeholder="`请输入${item.label}`"
+        :placeholder="`请选择${item.label}`"
         style="width: 180px"
       >
         <el-option
@@ -124,11 +124,24 @@ defineExpose({
       <el-select
         v-else-if="item.type === 'select2'"
         v-model="searchForm[item.prop]"
-        :placeholder="`请输入${item.label}`"
+        :placeholder="`请选择${item.label}`"
         style="width: 180px"
       >
         <el-option
           v-for="item in formSelect2"
+          :key="item.label"
+          :value="item.value"
+          :label="item.label"
+        />
+      </el-select>
+      <el-select
+        v-else-if="item.type === 'select3'"
+        v-model="searchForm[item.prop]"
+        :placeholder="`请选择${item.label}`"
+        style="width: 180px"
+      >
+        <el-option
+          v-for="item in formSelect3"
           :key="item.label"
           :value="item.value"
           :label="item.label"
