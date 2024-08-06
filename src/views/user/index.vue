@@ -19,20 +19,18 @@ const userList = ref([
     group: "普通用户",
     nickname: "琨哥",
     mobile: "158****8888",
+    phone: "15812348888",
     avatar: at1,
     money: 0,
-    wechat_name: null,
+    wechat_name: "年年有余",
     is_auth: "否",
-    id_card_name: null,
+    id_card_name: "未记录",
     id_card: "未记录",
     is_vip: "否",
     vip_time: null,
-    pid: 6267,
     kh_count: 0,
     jj_count: 0,
     sub_count: 0,
-    sid: 10006,
-    is_withdraw_sign: 0,
     withdraw_sign_time: null,
     usable_risk_count: 0,
     create_time: "2024-01-28",
@@ -41,8 +39,11 @@ const userList = ref([
     allocate_time: "2024-04-16",
     remark: "",
     extra: null,
-    invite_name: "赵云 (777)",
-    invite_mobile: "17828789797",
+    invite_name: "赵云 (888)",
+    invite_id: 888,
+    invite: "赵云",
+    score: 0,
+    invite_mobile: "17833389711",
     staff_name: "曹操",
     group_name: "普通用户"
   },
@@ -50,21 +51,20 @@ const userList = ref([
     id: 222,
     group: "普通用户",
     nickname: "张明",
+    score: 200,
     mobile: "158****7777",
+    phone: "15812347777",
     avatar: at2,
     money: 666,
-    wechat_name: null,
+    wechat_name: "花开富贵",
     is_auth: "是",
-    id_card_name: null,
+    id_card_name: "张明",
     id_card: "3427221988******71",
     is_vip: "是",
     vip_time: null,
-    pid: 6267,
-    kh_count: 0,
-    jj_count: 0,
-    sub_count: 0,
-    sid: 10006,
-    is_withdraw_sign: 0,
+    kh_count: 3,
+    jj_count: 6,
+    sub_count: 12,
     withdraw_sign_time: null,
     usable_risk_count: 0,
     create_time: "2024-01-28",
@@ -74,6 +74,8 @@ const userList = ref([
     remark: "",
     extra: null,
     invite_name: "黄忠 (777)",
+    invite_id: 777,
+    invite: "黄忠",
     invite_mobile: "17828789797",
     staff_name: "曹操",
     group_name: "普通用户"
@@ -117,7 +119,12 @@ const delUser = row => {
   });
 };
 // 查看
-const dialog = ref(true);
+const dialog = ref(false);
+const userInfoData = ref({});
+const detUser = row => {
+  dialog.value = true;
+  userInfoData.value = row;
+};
 // 加载中
 const loading = () => {
   openLoading.value = true;
@@ -210,7 +217,7 @@ const loading = () => {
       </el-table-column>
     </el-table>
     <el-dialog destroy-on-close v-model="dialog" title="基本信息" width="50%">
-      <updateUser />
+      <updateUser :userInfoData="userInfoData" />
     </el-dialog>
   </el-card>
 </template>
