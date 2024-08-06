@@ -142,13 +142,13 @@ const props = defineProps({
       }
     }
     .info {
-      margin-left: 20px;
+      // margin-left: 20px;
       display: grid;
       width: 100%;
-      gap: 10px 90px;
+      gap: 10px 80px;
       grid-template-columns: repeat(3, 1fr);
       color: #000;
-      font-size: 17px;
+      font-size: 15px;
       .label {
         width: 120px;
         text-align: right;
