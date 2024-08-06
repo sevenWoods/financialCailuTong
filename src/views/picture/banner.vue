@@ -7,6 +7,8 @@ defineOptions({
 });
 import { onMounted, ref } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
+import { initSort, upTableData } from "@/utils/drag";
+
 import Pagination from "@/components/Pagination/index.vue";
 import Search from "@/components/Search/index.vue";
 import updateBanner from "./updateBanner.vue";
@@ -17,6 +19,7 @@ import at2 from "@/assets/images/sanxiang.png";
 const searchRef = ref(null);
 const openLoading = ref(false);
 const updateBannerRef = ref(null);
+const tableRef = ref(null);
 const bannerList = ref([
   {
     id: 1,
@@ -72,8 +75,18 @@ const loading = () => {
     openLoading.value = false;
   }, 400);
 };
+/* // 拖拽排序接口
+const fnSort = async () => {
+  const { code } = await apiBannerEdit({
+    ...upTableData.value
+  })
+  if (code !== 200) return
+  ElMessage.success("修改排序成功")
+  getApiData()
+} */
 onMounted(() => {
   paginaRef.value.total = 2;
+  initSort(bannerList, tableRef, loading);
 });
 </script>
 
@@ -101,6 +114,8 @@ onMounted(() => {
       v-loading.lock="openLoading"
       element-loading-text="加载中..."
       :data="bannerList"
+      ref="tableRef"
+      row-key="id"
       max-height="550"
       style="width: 100%"
       :header-cell-style="{
@@ -120,7 +135,7 @@ onMounted(() => {
       </el-table-column>
       <el-table-column show-overflow-tooltip prop="url" label="链接" />
 
-      <el-table-column prop="sort" label="排序" />
+      <el-table-column prop="sort" label="排序<拖拽>" />
 
       <el-table-column prop="update_time" label="更新时间" />
       <el-table-column fixed="right" width="230" label="操作">
@@ -131,7 +146,7 @@ onMounted(() => {
       </el-table-column>
     </el-table>
     <Pagination ref="paginaRef" @refreshPage="loading" />
-    <updateBanner ref="updateBannerRef" @loading="loading"/>
+    <updateBanner ref="updateBannerRef" @loading="loading" />
   </el-card>
 </template>
 
