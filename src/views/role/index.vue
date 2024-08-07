@@ -70,7 +70,11 @@ onMounted(() => {
 
 <template>
   <el-card>
-    <Search ref="searchRef" :searchFormDtata="searchFormDtata">
+    <Search
+      ref="searchRef"
+      :searchFormDtata="searchFormDtata"
+      :refresh-list="loading"
+    >
       <template #hint>
         <div class="w-60">
           <el-alert
