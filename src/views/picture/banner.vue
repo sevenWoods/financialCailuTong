@@ -133,7 +133,7 @@ onMounted(() => {
           <el-image :src="row.image" class="TableimgPic" />
         </template>
       </el-table-column>
-      <el-table-column prop="url" label="链接" />
+      <el-table-column show-overflow-tooltip prop="url" label="链接" />
 
       <el-table-column prop="sort" label="排序<拖拽>" />
 

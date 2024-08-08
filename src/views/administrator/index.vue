@@ -7,10 +7,8 @@ import { ElMessage, ElMessageBox } from "element-plus";
 
 import Search from "@/components/Search/index.vue";
 import Pagination from "@/components/Pagination/index.vue";
-import at1 from "@/assets/images/at1.jpg";
-import at2 from "@/assets/images/at2.jpg";
-import at3 from "@/assets/images/at3.jpg";
 import updateAdmin from "./updateAdmin.vue";
+import { AdminData } from "@/utils/commonData";
 
 // 搜索
 const searchRef = ref(null);
@@ -37,38 +35,7 @@ const formSelect2 = [
 // 表格数据
 const paginaRef = ref(null);
 const openLoading = ref(false);
-const adminData = ref([
-  {
-    id: 1,
-    name: "administrator",
-    mobile: "18211115325",
-    email: "2942847@qq.com",
-    job: "admin",
-    role_name: "开发角色",
-    nickname: "一只猿",
-    avatar: at1
-  },
-  {
-    id: 2,
-    name: "ddx",
-    mobile: "13166666666",
-    email: "1462980@qq.com",
-    job: "admin",
-    role_name: "马总角色",
-    nickname: "琨琨",
-    avatar: at2
-  },
-  {
-    id: 3,
-    name: "18255145326",
-    mobile: "18211115326",
-    email: "2942847@qq.com",
-    job: "admin",
-    role_name: "经理角色",
-    nickname: "赵日天",
-    avatar: at3
-  }
-]);
+const adminData = ref(AdminData);
 // 表格操作
 const updateRef = ref(null);
 // 删除

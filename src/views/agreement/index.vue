@@ -68,8 +68,8 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch } from "vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { ElMessage, ElMessageBox } from "element-plus";
 import updateAgree from "./updateAgree.vue";
+import { agreeList } from "@/utils/commonData";
 
 // import checkAgreements from "@/views/agreements/checkAgreements.vue";
 // import AgreementsUpdate from "@/views/agreements/update.vue";
@@ -88,29 +88,7 @@ const getApiData = () => {
   openLoading.value = true;
   setTimeout(() => {
     openLoading.value = false;
-    tableData.value = [
-      {
-        id: 1,
-        title: "人机",
-        content: "8888",
-        create_time: "2023-06-05 14:40:05",
-        update_time: "2023-06-05 14:40:05"
-      },
-      {
-        id: 2,
-        title: "財虚琨",
-        content: "练习两年半的高材生",
-        create_time: "2023-01-15 09:58:04",
-        update_time: "2023-01-15 09:58:04"
-      },
-      {
-        id: 3,
-        title: "hello",
-        content: "你好brother",
-        create_time: "2023-01-15 09:58:02",
-        update_time: "2023-01-15 09:58:02"
-      }
-    ];
+    tableData.value = agreeList;
   }, 300);
 };
 
