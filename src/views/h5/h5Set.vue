@@ -32,9 +32,17 @@ const position = ref(true);
 const search = ref(true);
 const customer = ref(true);
 // 项目功能布局
+interface arr {
+  flag?: boolean;
+  imgurl: string;
+  key: string;
+  text: string;
+  url: string;
+}
+type IconState = arr[];
 const gridColumnsStyle = ref(null);
 const styleInfoList = ref(h5SetStyleIcon);
-const allIcon = ref(h5SetStyleAllIcon);
+const allIcon = ref<IconState>(h5SetStyleAllIcon);
 const iconForm = ref({
   row: null,
   column: null
@@ -43,6 +51,23 @@ const ifNotice = ref(3);
 const choiceNtc = num => {
   ifNotice.value = num;
 };
+// 处理数据
+const processData = () => {
+  const commonObjects = styleInfoList.value.filter(obj1 =>
+    allIcon.value.some(obj2 => obj1.key === obj2.key)
+  );
+  const commonKeys = commonObjects.map(item => item.key);
+  allIcon.value.forEach(item => {
+    if (commonKeys.includes(item.key)) {
+      item.flag = false;
+    } else {
+      item.flag = true;
+    }
+  });
+};
+onMounted(() => {
+  processData();
+});
 </script>
 
 <template>
@@ -207,6 +232,7 @@ const choiceNtc = num => {
                 <img :src="item.imgurl" />
                 <span>{{ item.text }}</span>
                 <IconifyIconOffline
+                  v-if="item.flag"
                   class="iconPB"
                   style="font-size: 16px; color: #1677fa"
                   :icon="Plus"
@@ -259,8 +285,12 @@ const choiceNtc = num => {
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="底部导航栏配置">Config</el-tab-pane>
-      <el-tab-pane label="个人中心配置">Task</el-tab-pane>
+      <el-tab-pane label="底部导航栏配置">
+        <img src="@/assets/images/tabbar.png" alt="" />
+      </el-tab-pane>
+      <el-tab-pane label="个人中心配置">
+        <img src="@/assets/images/user.png" alt="" />
+      </el-tab-pane>
     </el-tabs>
   </el-card>
 </template>
