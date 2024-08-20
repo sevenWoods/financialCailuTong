@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, markRaw } from "vue";
+import { ref, markRaw, onMounted } from "vue";
 import ReCol from "@/components/ReCol";
 import { useDark, randomGradient } from "./utils";
 import WelcomeTable from "./components/table/index.vue";
@@ -8,6 +8,8 @@ import { useRenderFlicker } from "@/components/ReFlicker";
 import { ChartBar, ChartLine, ChartRound } from "./components/charts";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { chartData, barChartData, progressData, latestNewsData } from "./data";
+
+import { ElNotification } from "element-plus";
 
 defineOptions({
   name: "Welcome"
@@ -24,6 +26,17 @@ const optionsBasis: Array<OptionsType> = [
     label: "本周"
   }
 ];
+const open1 = () => {
+  ElNotification({
+    title: "温馨提示",
+    message: "图片管理以下为空栏",
+    type: "info"
+  });
+};
+
+onMounted(() => {
+  open1();
+});
 </script>
 
 <template>
