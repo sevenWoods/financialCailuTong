@@ -6,9 +6,9 @@ export default {
   path: "/h5",
   redirect: "/h5/h5Set",
   meta: {
-    icon: "ep:set-up",
-    title: "H5管理",
-    rank: 11
+    icon: "ep:cellphone",
+    title: "H5配置",
+    rank: 2
   },
   children: [
     {
@@ -16,7 +16,7 @@ export default {
       name: "h5Set",
       component: () => import("@/views/h5/h5Set.vue"),
       meta: {
-        title: "前端配置",
+        title: "页面适配",
         // 通过设置showParent为true显示父级
         showParent: true
       }

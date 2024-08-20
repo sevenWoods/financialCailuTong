@@ -10,7 +10,7 @@ export default {
   meta: {
     icon: "ep:user",
     title: "用户管理",
-    rank: 10
+    rank: 4
   },
   children: [
     {

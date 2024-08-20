@@ -22,6 +22,16 @@ export default {
         // 通过设置showParent为true显示父级
         showParent: true
       }
+    },
+    {
+      path: "/picture/article",
+      name: "article",
+      component: () => import("@/views/article/list.vue"),
+      meta: {
+        title: "文章列表",
+        // 通过设置showParent为true显示父级
+        showParent: true
+      }
     }
   ]
 };

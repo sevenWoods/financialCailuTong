@@ -4,7 +4,7 @@ export default {
   meta: {
     icon: "ep:basketball",
     title: "菜单管理",
-    rank: 20
+    rank: 3
   },
   children: [
     {

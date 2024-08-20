@@ -10,7 +10,7 @@ export default {
   meta: {
     icon: "ep:present",
     title: "产品管理",
-    rank: 10
+    rank: 5
   },
   children: [
     {

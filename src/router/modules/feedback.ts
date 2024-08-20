@@ -8,7 +8,7 @@ export default {
   path: "/feedback",
   redirect: "/feedback/index",
   meta: {
-    icon: "ep:cellphone",
+    icon: "ep:chat-dot-round",
     title: "投诉管理",
     rank: 10
   },
