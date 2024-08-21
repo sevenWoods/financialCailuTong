@@ -1,1 +1,0 @@
-import{d as t,c as a,w as o,r as n,o as c,a as r}from"./index-BC5ra0FZ.js";const m=t({name:"whiteList",__name:"white",setup(s){return(_,l)=>{const e=n("el-card");return c(),a(e,null,{default:o(()=>[r(" 白名单 ")]),_:1})}}});export{m as default};

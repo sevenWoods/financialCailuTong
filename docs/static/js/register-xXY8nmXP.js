@@ -1,1 +1,0 @@
-import{d as t,c as a,w as o,r,o as n,a as c}from"./index-BC5ra0FZ.js";const i=t({name:"activityRegister ",__name:"register",setup(s){return(_,l)=>{const e=r("el-card");return n(),a(e,null,{default:o(()=>[c(" 活动注册 ")]),_:1})}}});export{i as default};

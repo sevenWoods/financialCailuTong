@@ -1,1 +1,0 @@
-import{d as a,c as t,w as o,r as c,o as n,a as r}from"./index-BC5ra0FZ.js";const m=a({name:"blackList",__name:"black",setup(s){return(_,l)=>{const e=c("el-card");return n(),t(e,null,{default:o(()=>[r(" 黑名单 ")]),_:1})}}});export{m as default};
