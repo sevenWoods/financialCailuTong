@@ -1,0 +1,1 @@
+import{d as t,c as a,w as o,r as n,o as c,a as r}from"./index-jOGrJ0Py.js";const m=t({name:"articleList",__name:"list",setup(s){return(_,l)=>{const e=n("el-card");return c(),a(e,null,{default:o(()=>[r(" 文章列表-配合图片 ")]),_:1})}}});export{m as default};
