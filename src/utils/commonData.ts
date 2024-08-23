@@ -180,3 +180,60 @@ export const agreeList = [
     update_time: "2023-01-15 09:58:02"
   }
 ];
+// 分线检测数据
+export const riskTableList=[
+  {
+    id: 11,
+    uid: 1001,
+    key: "01HZEEWWT9M3SFW56VFC99NXGG",
+    id_card_name: "孔明",
+    mobile: "18255145326",
+    id_card: "342622199800000008",
+    delete_time: null,
+    create_time: "2024-06-02 15:09:25",
+    update_time: "2024-06-03 15:09:25",
+    pdf_url: "/upload/pdf/01HZEEWWT9M3SFW56VFC99NXGG.pdf",
+    pay_type: "pay",
+    pay_value: 0.01,
+    pay_type_name: "金额支付",
+    url: "https://new.tuiqianhua.com/risk/preview?key=01HZEEWWT9M3SFW56VFC99NXGG",
+    detail_url:
+      "https://new.tuiqianhua.com/risk/preview?key=01HZEEWWT9M3SFW56VFC99NXGG"
+  },
+    {
+    id: 22,
+    uid: 10012,
+    key: "01HZEEWWT9M3SFW56VFC99NXGG",
+    id_card_name: "董卓",
+    mobile: "18255145326",
+    id_card: "342622199800000006",
+    delete_time: null,
+    create_time: "2024-06-12 15:09:25",
+    update_time: "2024-06-13 15:09:25",
+    pdf_url: "/upload/pdf/01HZEEWWT9M3SFW56VFC99NXGG.pdf",
+    pay_type: "pay",
+    pay_value: 0.01,
+    pay_type_name: "积分支付",
+    url: "https://new.tuiqianhua.com/risk/preview?key=01HZEEWWT9M3SFW56VFC99NXGG",
+    detail_url:
+      "https://new.tuiqianhua.com/risk/preview?key=01HZEEWWT9M3SFW56VFC99NXGG"
+  },
+      {
+    id: 33,
+    uid: 10013,
+    key: "01HZEEWWT9M3SFW56VFC99NXGG",
+    id_card_name: "悟空",
+    mobile: "18255145326",
+    id_card: "342622199800000009",
+    delete_time: null,
+    create_time: "2024-06-22 15:09:25",
+    update_time: "2024-06-23 15:09:25",
+    pdf_url: "/upload/pdf/01HZEEWWT9M3SFW56VFC99NXGG.pdf",
+    pay_type: "pay",
+    pay_value: 0.01,
+    pay_type_name: "次数支付",
+    url: "https://new.tuiqianhua.com/risk/preview?key=01HZEEWWT9M3SFW56VFC99NXGG",
+    detail_url:
+      "https://new.tuiqianhua.com/risk/preview?key=01HZEEWWT9M3SFW56VFC99NXGG"
+  },
+]
