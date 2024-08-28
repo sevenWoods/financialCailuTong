@@ -237,3 +237,116 @@ export const riskTableList=[
       "https://new.tuiqianhua.com/risk/preview?key=01HZEEWWT9M3SFW56VFC99NXGG"
   },
 ]
+
+// 税票
+export const taxreceiptList=[
+  {
+    id: 10008,
+    order_no: "01J3C54BTBJ1N1YV221PNMWNHW",
+    company_name: "东莞市采文科技有限公司",
+    credit_code: "91441900MA5398E922",
+    province: "",
+    city: "",
+    status: 0,
+    status_time: null,
+    match_ns_level: "",
+    match_create_time: null,
+    match_tax_amount_12: 0,
+    match_invoice_amount_12: 0,
+    match_city_code: 0,
+    product_count: 0,
+    product_ids: "",
+    match: null,
+    fail_message: "",
+    remark: null,
+    create_time: "2024-01-22 10:43:03",
+    update_time: "2024-01-22 10:43:03",
+    detail_url: "",
+    uid: "10011",
+    status_name: "待登录",
+    more_sptasks: [
+      {
+        sid: 10008,
+        uid: 10011,
+        create_time: "2024-01-22 10:43:03"
+      }
+    ]
+  },
+  {
+    id: 10007,
+    order_no: "01HZGKSS7SCRDK4CGHFYATW4E0",
+    company_name: "东莞市偌尘科技有限公司",
+    credit_code: "91441900MA53CTXC1G",
+    province: "",
+    city: "",
+    status: 0,
+    status_time: null,
+    match_ns_level: "",
+    match_create_time: null,
+    match_tax_amount_12: 0,
+    match_invoice_amount_12: 0,
+    match_city_code: 0,
+    product_count: 0,
+    product_ids: "",
+    match: null,
+    fail_message: "",
+    remark: [
+      {
+        uid: 21,
+        remark: "11",
+        create_time: "2024-06-25 14:54:12"
+      }
+    ],
+    create_time: "2024-02-04 11:13:35",
+    update_time: "2024-02-04 11:13:35",
+    detail_url: "",
+    uid: "10011",
+    status_name: "待登录",
+    more_sptasks: [
+      {
+        sid: 10007,
+        uid: 10011,
+        create_time: "2024-02-04 11:13:35"
+      }
+    ]
+  },
+  {
+    id: 10005,
+    order_no: "01HYHPCTFRKBCGZPV0WP6CSHZZ",
+    company_name: "梅州市世达物流服务有限公司",
+    credit_code: "91441402MA4W15K69T",
+    province: "广东",
+    city: "梅州市",
+    status: 3,
+    status_time: "2024-07-17 11:10:32",
+    match_ns_level: "",
+    match_create_time: null,
+    match_tax_amount_12: 0,
+    match_invoice_amount_12: 0,
+    match_city_code: 0,
+    product_count: 0,
+    product_ids: "",
+    match: null,
+    fail_message: "",
+    remark: [
+      {
+        uid: 21,
+        remark: "888",
+        create_time: "2024-03-17 10:21:35"
+      }
+    ],
+    create_time: "2024-03-23 11:02:29",
+    update_time: "2024-03-23 11:02:29",
+    detail_url:
+      "https://new.tuiqianhua.com/vip/#/admtaxdetail?id=10005&is_ht=1",
+    uid: "10011",
+    status_name: "采集成功",
+    more_sptasks: [
+      {
+        sid: 10005,
+        uid: 10011,
+        create_time: "2024-05-23 11:02:29"
+      }
+    ]
+  },
+]
