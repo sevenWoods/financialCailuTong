@@ -1,1 +1,0 @@
-import{d as t,c as o,w as a,r as n,o as c,a as s}from"./index-jOGrJ0Py.js";const m=t({name:"noticeList",__name:"list",setup(r){return(_,l)=>{const e=n("el-card");return c(),o(e,null,{default:a(()=>[s("通知列表")]),_:1})}}});export{m as default};
