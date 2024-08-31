@@ -29,7 +29,7 @@ const optionsBasis: Array<OptionsType> = [
 const open1 = () => {
   ElNotification({
     title: "温馨提示",
-    message: "图片管理以下为空栏",
+    message: "税票列表以下为空栏",
     type: "info"
   });
 };
